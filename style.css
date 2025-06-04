@@ -6,6 +6,13 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     height: 100vh;
 }
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
 :root {
   --white: #fff;
   --grey: #ccc;
@@ -117,127 +124,87 @@ body{
   }
 }
 
-.box-container{
-    top: 100px;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 2rem;
-    flex-wrap: wrap;
-    }
-
-.rotating-text span{
-    margin-bottom: 20px;
-    font-size: 5vh; 
-    font-weight: 700; 
-    font-family: 'Playfair Display', serif; 
-    color: #9457c7;
-    letter-spacing: 1px; /*Spacing between letters*/
-    text-align: center;
-}
-.box-container p{
-  margin-bottom: 20px;
-  font-size: 36px; 
-  font-weight: 700; 
-  font-family: 'Playfair Display', serif; 
-  color: white;
-  letter-spacing: 1px; /*Spacing between letters*/
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
   text-align: center;
 }
 
 
-.image img {
-  width: 50vw; 
-  max-width: 200px;
-  height: auto;
-  border-radius: 50%;
+.box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-.home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 2rem;
-  background-color: rgb(8, 8, 8);
+
+.box-container p {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
-/* .box-container {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-} */
 
 .rotating-text {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
   display: flex;
   align-items: center;
-  height: 40px;
-  overflow: hidden;
-  white-space: nowrap;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+  font-family: Arial, sans-serif;
+  color: #9b59b6;
 }
 
 .rotating-text .prefix {
-  margin-right: 5px;
+  margin-right: 10px;
 }
+
 
 .changing-text {
   display: inline-block;
+  height: 35px;
+  overflow: hidden;
   position: relative;
-  text-shadow:  1px 1px 2px black,
-  0 0 1em blue,
-  0 0 0.2em blue;
-  width: 300px; /* Fixed width to prevent jumping */
-  height: 100%;
 }
 
 .changing-text span {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  animation: fadeInOut 6s linear infinite;
-  width: 100%;
+  display: block;
+  animation: rotateText 6s linear infinite;
 }
 
-.changing-text span:nth-child(1) {
-  animation-delay: 0s;
-}
-.changing-text span:nth-child(2) {
-  animation-delay: 2s;
-}
-.changing-text span:nth-child(3) {
-  animation-delay: 4s;
+@keyframes rotateText {
+  0% { transform: translateY(0); }
+  33% { transform: translateY(-35px); }
+  66% { transform: translateY(-70px); }
+  100% { transform: translateY(0); }
 }
 
-@keyframes fadeInOut {
-  /* Start fully transparent */
-  0% { opacity: 0; }
-
-  /* Fade in to fully visible */
-  10% { opacity: 1; }
-
-  /* Stay fully visible */
-  30% { opacity: 1; }
-
-  /* Fade out to fully transparent */
-  40% { opacity: 0; }
-
-  /* Remain transparent till the end */
-  100% { opacity: 0; }
+.image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+@media (max-width: 600px) {
+  .rotating-text {
+    font-size: 2rem;
+  }
+  .box-container p {
+    font-size: 2rem;
+  }
+  .image img {
+    width: 120px;
+    height: 120px;
+  }
+}
   .about {
     color: white;
     max-width: 100%;
@@ -389,32 +356,41 @@ html, body {
 
 /* end skills */
 
-.education, .experience{
+.education {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 40rem;
   flex: 1 1 40rem;
   min-height: auto;
+  width: 100%;
+  margin: 30px;
+  margin-left: 50px;
+  margin-right: 40px;
+  gap: 10px;
 
 }
 .education h2{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 70px;
+  margin-bottom:50px;
   color: white;
+  font-size: 30px;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
 }
 .experience-item{
   position: relative;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 20rem;
-  flex: 1 1 20rem;
-  padding: 0 3rem 2rem 3rem;
+  padding: 0 3rem;
   border-left: 0.2rem solid #9f45db;
   margin-left: 2rem;
+  margin-bottom: 10px;
 }
 
 .experience-item i{
   display: flex;
   position: absolute;
-  top: 0; 
   left: -2.5rem;
-  height:5rem;
   width: 5rem;
   border-radius: 50%;
   line-height: 5rem;
@@ -422,12 +398,14 @@ html, body {
   font-size: 2rem;
   color:white;
   background:#9f45db;
+    margin-bottom: 10px;
+
 }
 
 .experience-item .content{
   border-radius: 0.5rem;
-  padding: 1rem 2rem;
-  border-left: 2rem;
+  padding: 10px;
+  border-left: 1rem;
 }
 
 .experience-item span{
@@ -441,13 +419,12 @@ html, body {
 .experience-item h3{
   font-size: 2.5rem;
   color: white;
-  padding: 2rem 0;
 }
 
 .experience-item p{
   color:white;
   font-size: 1.6rem;
-  line-height: 2.5rem;
+  line-height: 1rem;
 }
 
 /* start projects */
